@@ -1,0 +1,8 @@
+New User
+
+= semantic_form_for @user do |form|
+  = form.inputs :email, :password, :password_confirmation
+  = form.semantic_fields_for :business, @business do |business_form|
+    = business_form.inputs :name
+  = form.buttons do
+    = form.commit_button "Sign up"
