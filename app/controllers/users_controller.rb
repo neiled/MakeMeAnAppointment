@@ -5,14 +5,13 @@ class UsersController < ApplicationController
   
   def new
     @user = User.new
-    @business = @user.create_business
+    @business = @user.build_business
   end
 
   def create
     @user = User.new(params[:user])
     if @user.save
-      flash[:notice] = "Account Registered"
-      redirect_to @user.business
+      redirect_to @user.business, :notice => "Account Registered"
     else
       render :action => "new"
     end

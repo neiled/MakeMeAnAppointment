@@ -14,11 +14,11 @@ module NavigationHelpers
     when /the registration page/
       new_user_path
     
-    when /the user account page for "(.*)"/
-      profile_path(:login => $1)
-      
     when /the login page/
       signin_path
+
+    when /the business page for "(.*)"/
+      business_path(Business.find_by_name($1)) 
  
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

@@ -6,11 +6,11 @@ Feature: Authentication
   Scenario: Create a new account
     Given I am on the registration page
     When I fill in "Email" with "neil@plasticwater.com"
-    And I fill in "Domain name" with "neils"
+    And I fill in "Business name" with "neils"
     And I fill in "Password" with "password"
     And I fill in "Password confirmation" with "password"
     And I press "Sign up"
-    Then I should be on the user account page for "neiled"
+    Then I should be on the business page for "neils"
     And there should be 1 user
 
   Scenario: Logging in
