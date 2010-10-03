@@ -1,3 +1,7 @@
+When /^I take a snapshot/ do
+  save_and_open_page
+end
+
 Then /^there should be (\d+) user$/ do |arg1|
   User.all.count == arg1
 end
@@ -10,6 +14,7 @@ Given /^I have a user with the email "([^"]*)" and the password "([^"]*)"$/ do |
   fill_in "Password confirmation", :with =>arg2
   fill_in "Business name", :with => "Acme Co"
   click_button "Sign up"
+  visit signout_path
 end
 
 Given /^I am logged in as the user "([^"]*)"$/ do |arg1|

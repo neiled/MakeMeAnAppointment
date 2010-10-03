@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+%html
+%head
+  %title= request.fullpath 
+  = stylesheet_link_tag :all 
+  = javascript_include_tag :defaults 
+  = csrf_meta_tag 
+%body
+  = render :partial=> 'shared/flashes'
+  = render :partial => 'shared/header'
+  = yield 

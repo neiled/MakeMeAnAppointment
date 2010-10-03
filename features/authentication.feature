@@ -15,17 +15,18 @@ Feature: Authentication
 
   Scenario: Logging in
     Given I have a user with the email "neil@plasticwater.com" and the password "secret"
-    And I am on the login page
-    When I fill in "email" with "neil@platicwater.com"
-    And I fill in "password" with "secret"
+    When I go to the login page
+    #And I take a snapshot
+    And I fill in "Email" with "neil@platicwater.com"
+    And I fill in "Password" with "secret"
     And I press "Sign in"
     Then I should be on the user account page for "neil@plasticwater.com"
     And I should see "Welcome back"
     And I should see "Sign out"
     
-  Scenario: Logging out
-    Given I have a user with the email "neil@plasticwater.com" and the password "secret"
-    And I am logged in as the user "neil@plasticwater.com"
-    And I am on the user account page for "neil@plasticwater.com"
-    When I follow "Sign out"
-    Then I should be logged out
+  #Scenario: Logging out
+    #Given I have a user with the email "neil@plasticwater.com" and the password "secret"
+    #And I am logged in as the user "neil@plasticwater.com"
+    #And I am on the user account page for "neil@plasticwater.com"
+    #When I follow "Sign out"
+    #Then I should be logged out

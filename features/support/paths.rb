@@ -15,7 +15,7 @@ module NavigationHelpers
       new_user_path
     
     when /the login page/
-      signin_path
+      new_user_session_path
 
     when /the business page for "(.*)"/
       business_path(Business.find_by_name($1)) 
