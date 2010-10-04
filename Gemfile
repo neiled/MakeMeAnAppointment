@@ -11,14 +11,20 @@ gem 'formtastic'
 gem 'authlogic', :git => "http://github.com/binarylogic/authlogic.git"
 
 group :test, :development do
-  gem "rspec-rails", ">= 2.0.0.beta.22"
+  #gem "rspec-rails", ">= 2.0.0.beta.22"
+  gem "shoulda"
+  gem "rspec-rails",        :git => "git://github.com/rspec/rspec-rails.git"
+  gem "rspec",              :git => "git://github.com/rspec/rspec.git"
+  gem "rspec-core",         :git => "git://github.com/rspec/rspec-core.git"
+  gem "rspec-expectations", :git => "git://github.com/rspec/rspec-expectations.git"
+  gem "rspec-mocks",        :git => "git://github.com/rspec/rspec-mocks.git"
   gem 'capybara'
   gem 'database_cleaner'
   gem 'cucumber-rails'
   gem 'cucumber'
   gem 'spork'
   gem 'launchy'    # So you can do Then show me the page
-  
+  gem 'rr'  
 end
 
 # Use unicorn as the web server
