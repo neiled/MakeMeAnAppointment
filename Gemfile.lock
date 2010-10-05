@@ -1,39 +1,39 @@
 GIT
   remote: git://github.com/rspec/rspec-core.git
-  revision: 0ddf3ce39c2bd8f6e3d2221b4b7dcc608125de0a
+  revision: c5e6bc031404762edcda7789ecc04c6d340c8ef6
   specs:
-    rspec-core (2.0.0.beta.22)
+    rspec-core (2.0.0.rc)
 
 GIT
   remote: git://github.com/rspec/rspec-expectations.git
-  revision: dd9e8777cef5baf5969271a9befa26426c265d77
+  revision: b1a6c848265c9912a1bb49afbae0e6cb1e50f3fd
   specs:
-    rspec-expectations (2.0.0.beta.22)
+    rspec-expectations (2.0.0.rc)
       diff-lcs (>= 1.1.2)
 
 GIT
   remote: git://github.com/rspec/rspec-mocks.git
-  revision: 409b2d0cf08a333966bcbf4f80f02dbd7434bff6
+  revision: 361f31542f8ef4aa1a0cb8102893627022fcc88b
   specs:
-    rspec-mocks (2.0.0.beta.22)
-      rspec-core (= 2.0.0.beta.22)
-      rspec-expectations (= 2.0.0.beta.22)
+    rspec-mocks (2.0.0.rc)
+      rspec-core (= 2.0.0.rc)
+      rspec-expectations (= 2.0.0.rc)
 
 GIT
   remote: git://github.com/rspec/rspec-rails.git
-  revision: 7de6d053c2ad442517ad9906cd64ec04a752675e
+  revision: 2644b79ca86b6395185a6741e73007b3e0661c02
   specs:
-    rspec-rails (2.0.0.beta.22)
-      rspec (= 2.0.0.beta.22)
+    rspec-rails (2.0.0.rc)
+      rspec (= 2.0.0.rc)
 
 GIT
   remote: git://github.com/rspec/rspec.git
-  revision: 3df49f5942c29aa3eaff80f5904e0b3d4b4f6fed
+  revision: bf20df3f6652f15f014c7d6d546edd9456749196
   specs:
-    rspec (2.0.0.beta.22)
-      rspec-core (= 2.0.0.beta.22)
-      rspec-expectations (= 2.0.0.beta.22)
-      rspec-mocks (= 2.0.0.beta.22)
+    rspec (2.0.0.rc)
+      rspec-core (= 2.0.0.rc)
+      rspec-expectations (= 2.0.0.rc)
+      rspec-mocks (= 2.0.0.rc)
 
 GIT
   remote: http://github.com/binarylogic/authlogic.git
@@ -42,9 +42,16 @@ GIT
     authlogic (2.1.6)
       activesupport
 
+GIT
+  remote: http://github.com/thoughtbot/flutie.git
+  revision: c43453449741e4408847b6b4a20fe683889cce91
+  specs:
+    flutie (1.0.4)
+
 GEM
   remote: http://rubygems.org/
   specs:
+    ZenTest (4.4.0)
     abstract (1.0.0)
     actionmailer (3.0.0)
       actionpack (= 3.0.0)
@@ -96,6 +103,10 @@ GEM
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    factory_girl (1.3.2)
+    factory_girl_rails (1.0)
+      factory_girl (~> 1.3)
+      rails (>= 3.0.0.beta4)
     ffi (0.6.3)
       rake (>= 0.8.7)
     formtastic (1.1.0)
@@ -157,11 +168,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ZenTest
   authlogic!
   capybara
   cucumber
   cucumber-rails
   database_cleaner
+  factory_girl_rails
+  flutie!
   formtastic
   haml
   launchy

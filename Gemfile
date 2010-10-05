@@ -9,6 +9,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'haml'
 gem 'formtastic'
 gem 'authlogic', :git => "http://github.com/binarylogic/authlogic.git"
+gem 'flutie', :git => "http://github.com/thoughtbot/flutie.git"
 
 group :test, :development do
   #gem "rspec-rails", ">= 2.0.0.beta.22"
@@ -25,6 +26,8 @@ group :test, :development do
   gem 'spork'
   gem 'launchy'    # So you can do Then show me the page
   gem 'rr'  
+  gem 'factory_girl_rails'
+  gem 'ZenTest'
 end
 
 # Use unicorn as the web server
