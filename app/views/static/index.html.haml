@@ -1,1 +1,29 @@
-%h1 Welcome to Make Me an Appointment
+- content_for :header do
+  -#%meta{"http-equiv"=>"refresh", :content =>"3"}
+  =stylesheet_link_tag "http://yui.yahooapis.com/3.2.0/build/cssgrids/grids-min.css"
+#headings.yui3-g
+  .yui3-u-1-4
+  #title_text.yui3-u-1-2
+    %h1 Make Me An Appointment
+    %h2 Start accepting online appointments now!
+  .yui-u-1-4
+#features.yui3-g
+  #logo.yui3-u-1-3
+    %img{:src=>"/images/logo.png"}
+  #feature_list.yui3-u-2-3
+    %ul
+      %li 24/7 appointment booking
+      %li No need for customers to sign up
+      %li Reminders for you and your customer
+      %li Easy cancellation process means fewer 'no shows'
+#detail.yui3-g
+  %ul.yui3-u-1-2
+    %li
+      .feature_heading Free to customers
+      .feature_description Your customers don't have to pay anything, they don't even have to create and account! This means it's quick and easy for them to make an appointment. The easier it is, the more appointments you'll get!
+  %ul.yui3-u-1-2
+    %li
+      .feature_heading Different appointment types
+      .feature_description Appointment types can have different prices, durations and descriptions. Make me an appointment can deal with any type of appointment that you might need.
+     
+

@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/rspec/rspec-core.git
-  revision: c5e6bc031404762edcda7789ecc04c6d340c8ef6
+  revision: fc37841447460a0be4d45d82e26167448e17795f
   specs:
     rspec-core (2.0.0.rc)
 
@@ -21,7 +21,7 @@ GIT
 
 GIT
   remote: git://github.com/rspec/rspec-rails.git
-  revision: 2644b79ca86b6395185a6741e73007b3e0661c02
+  revision: b45d0936d77f3e532a08fc1b49f072be05873f94
   specs:
     rspec-rails (2.0.0.rc)
       rspec (= 2.0.0.rc)
