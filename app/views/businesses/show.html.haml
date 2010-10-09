@@ -1,1 +1,18 @@
 %h1= @business.name
+
+%h2
+  Listing bookables
+%table
+  %tr
+    %th
+      Name
+    %th
+      Show
+    %th
+      Edit
+    %th
+      Destroy
+  =render @business.bookables
+
+
+= link_to "Add something that can be booked", new_business_bookable_path(@business)

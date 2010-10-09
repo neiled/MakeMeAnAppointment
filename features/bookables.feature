@@ -4,11 +4,11 @@ Feature: Bookable items
 	I want to be able to define the things that can be booked
 
 	Scenario: Create a new bookable item
-		Given I am I logged in
+		Given I am logged in
 		When I follow "Add something that can be booked"
 		And I fill in "Name" with "Sally"
 		And I fill in "Description" with "The best hairdresser in the world"
-		And I press "Add"
-		Then I should be on my business page
-		And there should be one bookable item
+		And I press "Create Bookable"
+    Then I should be on my business page
+		And there should be 1 bookable item
 		And I should see "Sally"

@@ -1,0 +1,9 @@
+%tr
+  %td= bookable.name
+  %td
+    = link_to 'Show', business_bookable_path(bookable.business, bookable)
+  %td
+    = link_to 'Edit', edit_business_bookable_path(bookable.business, bookable)
+  %td
+    = link_to 'Destroy', business_bookable_path(bookable.business, bookable), :confirm => 'Are you sure?', :method => :delete
+

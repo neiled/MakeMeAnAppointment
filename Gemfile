@@ -10,6 +10,7 @@ gem 'haml'
 gem 'formtastic'
 gem 'authlogic', :git => "http://github.com/binarylogic/authlogic.git"
 gem 'flutie', :git => "http://github.com/thoughtbot/flutie.git"
+gem 'cells'
 
 group :test, :development do
   #gem "rspec-rails", ">= 2.0.0.beta.22"

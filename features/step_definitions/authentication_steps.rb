@@ -28,3 +28,9 @@ Then /^I should be logged out$/ do
   UserSession.find.should be_nil
 end
 
+Given /^I am logged in$/ do
+  Given "I have a user with the email \"neil@plasticwater.com\" and the business \"Acme\""
+  Given "I am logged in as the user \"neil@plasticwater.com\""
+end
+
+

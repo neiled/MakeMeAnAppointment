@@ -1,0 +1,7 @@
+= semantic_form_for [@business, @bookable] do |f|
+  = f.semantic_errors :state
+  = f.inputs do
+    = f.input :name
+    = f.input :description
+    = f.input :business_id, :as => :hidden
+  = f.buttons

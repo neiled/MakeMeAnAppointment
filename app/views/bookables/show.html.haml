@@ -1,0 +1,6 @@
+%h1= @bookable.name 
+#description= @bookable.description
+
+= link_to 'Edit', edit_business_bookable_path(@bookable.business, @bookable)
+|
+= link_to 'Back', business_path(@bookable.business)

@@ -1,0 +1,12 @@
+%h1
+  Listing bookables
+%table
+  %tr
+    %th
+      Name
+    %th
+    %th
+    %th
+= render @bookables
+
+= link_to 'New Bookable', new_bookable_path 

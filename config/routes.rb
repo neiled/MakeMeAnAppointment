@@ -4,7 +4,9 @@ Mmaa::Application.routes.draw do
   match '/signout' => 'user_sessions#destroy', :as => :signout
   
   resources :users
-  resources :businesses
+  resources :businesses do
+    resources :bookables
+  end
   resources :user_sessions
   #match 'signin' => 'user_sessions#new', :as => :signin
   
