@@ -49,7 +49,7 @@ class BookablesController < ApplicationController
     respond_to do |format|
       if @bookable.update_attributes(params[:bookable])
         format.html {
-          redirect_to(@bookable, :notice => 'Bookable was successfully updated.') 
+          redirect_to(@bookable.business, :notice => 'Bookable was successfully updated.') 
         }
       else
         format.html { render :action => "edit" }

@@ -1,17 +1,10 @@
-%h1= @business.name
+- content_for :header do
+  =stylesheet_link_tag "business.css"
+#h1= @business.name
 
 %h2
   Listing bookables
-%table
-  %tr
-    %th
-      Name
-    %th
-      Show
-    %th
-      Edit
-    %th
-      Destroy
+#bookable_table
   =render @business.bookables
 
 
