@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to businesses_path, :notice => "Account Registered"
+      redirect_to business_path, :notice => "Account Registered"
     else
       render :action => "new"
     end

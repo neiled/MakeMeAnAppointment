@@ -1,9 +1,9 @@
 .bookable_overview
   .bookable_name
-    = link_to bookable.name, business_bookable_path(bookable.business, bookable)
+    = link_to bookable.name, business_bookable_path(bookable)
   .bookable_desc= bookable.description
   .edit
-    = link_to 'Edit', edit_business_bookable_path(bookable.business, bookable)
+    = link_to 'Edit', edit_business_bookable_path(bookable)
   .delete
-    = link_to 'Delete', business_bookable_path(bookable.business, bookable), :confirm => 'Are you sure?', :method => :delete
+    = link_to 'Delete', business_bookable_path(bookable), :confirm => 'Are you sure?', :method => :delete
 

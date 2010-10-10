@@ -1,6 +1,13 @@
 require 'spec_helper'
 
 describe BookablesController do
+  
+  def login_user
+    activate_authlogic
+    my_user = Factory(:user)
+    UserSession.create(my_user)
+  end # login_user
+  
 
   describe "GET index" do
     it "assigns all bookables as @bookables" do
@@ -28,9 +35,10 @@ describe BookablesController do
 
   describe "GET edit" do
     it "assigns the requested bookable as @bookable" do
+      login_user
       my_mock = Factory(:bookable)
       stub(Bookable).find("37") {my_mock}
-      get :edit, :id => "37", :business_id => my_mock.business_id
+      get :edit, :id => "37"
       assigns(:bookable).should be(my_mock)
     end
   end
@@ -39,6 +47,7 @@ describe BookablesController do
 
     describe "with valid params" do
       it "assigns a newly created bookable as @bookable" do
+        login_user
         mock(my_mock = Factory(:bookable)).save {true}
         stub(Bookable).new {my_mock}
         post :create, :business_id => my_mock.business_id 
@@ -46,11 +55,12 @@ describe BookablesController do
      end
 
       it "redirects to the business page" do
+        login_user
         mock(my_mock = Factory.build(:bookable)).save {true}
         stub(Bookable).new({}) { my_mock }
         post :create, :bookable => {}, :business_id => my_mock.business_id
 
-        response.should redirect_to(:controller => "businesses", :action => "index")
+        response.should redirect_to(business_path)
       end
     end
 

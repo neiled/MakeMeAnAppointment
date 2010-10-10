@@ -1,7 +1,7 @@
 class BusinessesController < ApplicationController
   before_filter :require_user
 
-  def index
+  def show
     @business = current_user.business
   end # show
 

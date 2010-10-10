@@ -16,6 +16,6 @@ describe UsersController do
     mock(user).save {true}
     post :create, :user => {} 
     should set_the_flash
-    response.should redirect_to(businesses_url)
+    response.should redirect_to(business_url)
   end
 end

@@ -1,4 +1,6 @@
 class BookablesController < ApplicationController
+  before_filter :require_user
+
   def index
     @bookables = Bookable.all
 
@@ -16,7 +18,7 @@ class BookablesController < ApplicationController
   end
 
   def new
-    @business = Business.find(params[:business_id])
+    @business = current_user.business
     @bookable = @business.bookables.build
 
     respond_to do |format|
@@ -29,13 +31,13 @@ class BookablesController < ApplicationController
   end
 
   def create
-    @business = Business.find(params[:business_id])
+    @business = current_user.business
     @bookable = Bookable.new(params[:bookable])
 
     respond_to do |format|
       if @bookable.save
         format.html {
-          redirect_to(businesses_path, :notice => 'Bookable was successfully created.') 
+          redirect_to(business_path, :notice => 'Bookable was successfully created.') 
         }
       else
         format.html { render :action => "new" }
@@ -49,7 +51,7 @@ class BookablesController < ApplicationController
     respond_to do |format|
       if @bookable.update_attributes(params[:bookable])
         format.html {
-          redirect_to(businesses_path, :notice => 'Bookable was successfully updated.') 
+          redirect_to(business_path, :notice => 'Bookable was successfully updated.') 
         }
       else
         format.html { render :action => "edit" }
