@@ -35,7 +35,7 @@ class BookablesController < ApplicationController
     respond_to do |format|
       if @bookable.save
         format.html {
-          redirect_to(@bookable.business, :notice => 'Bookable was successfully created.') 
+          redirect_to(businesses_path, :notice => 'Bookable was successfully created.') 
         }
       else
         format.html { render :action => "new" }
@@ -49,7 +49,7 @@ class BookablesController < ApplicationController
     respond_to do |format|
       if @bookable.update_attributes(params[:bookable])
         format.html {
-          redirect_to(@bookable.business, :notice => 'Bookable was successfully updated.') 
+          redirect_to(businesses_path, :notice => 'Bookable was successfully updated.') 
         }
       else
         format.html { render :action => "edit" }

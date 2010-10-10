@@ -1,5 +1,13 @@
 class BusinessesController < ApplicationController
-  def show
-    @business = Business.find(params[:id]) 
-  end
+  before_filter :require_user
+
+  def index
+    @business = current_user.business
+  end # show
+
+  def edit
+    @business = current_user.business
+  end # edit
+  
+ 
 end

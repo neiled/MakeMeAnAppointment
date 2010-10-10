@@ -10,7 +10,7 @@ Feature: Authentication
     And I fill in "Password" with "password"
     And I fill in "Password confirmation" with "password"
     And I press "Sign up"
-    Then I should be on the business page for "neils"
+    Then I should be on my business page
     And there should be 1 user
     And I should not see "Sign in"
 
@@ -20,7 +20,7 @@ Feature: Authentication
     And I fill in "Email" with "neil@plasticwater.com"
     And I fill in "Password" with "secret"
     And I press "Sign in"
-    Then I should be on the business page for "neils"
+    Then I should be on my business page
     And I should see "Welcome back"
     And I should see "Sign out"
     

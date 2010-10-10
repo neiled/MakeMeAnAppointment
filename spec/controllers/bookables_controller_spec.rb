@@ -28,9 +28,10 @@ describe BookablesController do
 
   describe "GET edit" do
     it "assigns the requested bookable as @bookable" do
-      #stub(Bookable).find("37") { mock_bookable }
-      #get :edit, :id => "37"
-      #assigns(:bookable).should be(mock_bookable)
+      my_mock = Factory(:bookable)
+      stub(Bookable).find("37") {my_mock}
+      get :edit, :id => "37", :business_id => my_mock.business_id
+      assigns(:bookable).should be(my_mock)
     end
   end
 
@@ -49,7 +50,7 @@ describe BookablesController do
         stub(Bookable).new({}) { my_mock }
         post :create, :bookable => {}, :business_id => my_mock.business_id
 
-        response.should redirect_to(:controller => "businesses", :action => "show", :id => my_mock.business)
+        response.should redirect_to(:controller => "businesses", :action => "index")
       end
     end
 

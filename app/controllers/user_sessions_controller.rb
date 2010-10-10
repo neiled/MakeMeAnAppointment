@@ -9,7 +9,7 @@ class UserSessionsController < ApplicationController
   def create
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
-      redirect_back_or_default business_path(@user_session.user.business), :notice => "Welcome back"
+      redirect_back_or_default businesses_path, :notice => "Welcome back"
     else
       render :action => :new
     end

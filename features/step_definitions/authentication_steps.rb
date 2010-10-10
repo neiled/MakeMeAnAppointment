@@ -1,11 +1,6 @@
-When /^I take a snapshot/ do
-  save_and_open_page
-end
-
 Then /^there should be (\d+) user$/ do |arg1|
   User.all.count == arg1
 end
-
 
 Given /^I have a user with the email "([^"]*)" and the business "([^"]*)"$/ do |arg1, arg2|
   visit new_user_path

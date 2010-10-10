@@ -18,10 +18,10 @@ module NavigationHelpers
       new_user_session_path
 
     when /the business page for "(.*)"/
-      business_path(Business.find_by_name($1)) 
+      businesses_path(Business.find_by_name($1)) 
 
     when /my business page/
-      business_path(Business.first)
+      businesses_path
  
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

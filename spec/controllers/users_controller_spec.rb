@@ -14,10 +14,8 @@ describe UsersController do
     user = Factory(:user)
     mock(User).new({}) {user}
     mock(user).save {true}
-    business = Factory(:business)
-    mock(user).business {business}
     post :create, :user => {} 
     should set_the_flash
-    response.should redirect_to(business_url(business))
+    response.should redirect_to(businesses_url)
   end
 end
