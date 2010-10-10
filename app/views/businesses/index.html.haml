@@ -1,9 +1,9 @@
 - content_for :header do
   =stylesheet_link_tag "business.css"
-#h1= @business.name
+%h1= @business.name
 
 %h2
-  Listing bookables
+  Current Bookables
 #bookable_table
   =render @business.bookables
 
