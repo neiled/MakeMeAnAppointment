@@ -11,8 +11,7 @@ describe UserSessionsController do
       #UserSession.stub(:new).and_return(session)
       #UserSession.stub(:user).and_return(user)
       #User.stub(:business).and_return(business)
-      mock(UserSession).save {true}
-      
+      UserSession.mock(:save).and_return(true)
       
       post :create
       response.should redirect_to(:controller => "business", :action => "show")
@@ -24,10 +23,10 @@ describe UserSessionsController do
       should set_the_flash
     end
     it "destroys the user session" do
-      stub(@controller).current_user {User.new} 
-      mock(my_object = UserSession.new).destroy 
-      stub(@controller).current_user_session {my_object} 
-      #mock(UserSession).destroy
+      controller.stub(:current_user).and_return(User.new)
+      my_object = UserSession.new
+      my_object.should_receive(:destroy)
+      controller.stub(:current_user_session).and_return(my_object)
       post :destroy 
     end
   end 

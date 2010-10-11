@@ -2,13 +2,6 @@ require 'spec_helper'
 
 describe BookablesController do
   
-  def login_user
-    activate_authlogic
-    my_user = Factory(:user)
-    UserSession.create(my_user)
-  end # login_user
-  
-
   describe "GET index" do
     it "assigns all bookables as @bookables" do
       #stub(Bookable).all { [mock_bookable] }
@@ -26,18 +19,26 @@ describe BookablesController do
   end
 
   describe "GET new" do
-    it "assigns a new bookable as @bookable" do
-      #stub(Bookable).new { mock_bookable }
-      #get :new
-      #assigns(:bookable).should be(mock_bookable)
+    it "assigns a new bookable as @bookable and business as @business" do
+      activate_authlogic
+      login
+      my_business = Factory(:business)
+      current_user.stub(:business).and_return (my_business)
+      my_bookable = Bookable.new
+      proxy = mock('business association proxy', :build => my_bookable)
+      my_business.should_receive(:bookables).and_return(proxy)
+      get :new
+      assigns(:bookable).should be(my_bookable)
+      assigns(:business).should be(my_business)
     end
   end
 
   describe "GET edit" do
     it "assigns the requested bookable as @bookable" do
-      login_user
+      activate_authlogic
+      login
       my_mock = Factory(:bookable)
-      stub(Bookable).find("37") {my_mock}
+      Bookable.stub(:find).with("37").and_return(my_mock)
       get :edit, :id => "37"
       assigns(:bookable).should be(my_mock)
     end
@@ -47,17 +48,21 @@ describe BookablesController do
 
     describe "with valid params" do
       it "assigns a newly created bookable as @bookable" do
-        login_user
-        mock(my_mock = Factory(:bookable)).save {true}
-        stub(Bookable).new {my_mock}
+        activate_authlogic
+        login
+        my_mock = stub_model(Bookable)
+        my_mock.should_receive(:save).and_return(true)
+        Bookable.stub(:new).and_return(my_mock)
         post :create, :business_id => my_mock.business_id 
         assigns(:bookable).should be(my_mock)
      end
 
       it "redirects to the business page" do
-        login_user
-        mock(my_mock = Factory.build(:bookable)).save {true}
-        stub(Bookable).new({}) { my_mock }
+        activate_authlogic
+        login
+        my_mock = Factory.build(:bookable)
+        my_mock.should_receive(:save).and_return(true)
+        Bookable.stub(:new).with({}).and_return(my_mock)
         post :create, :bookable => {}, :business_id => my_mock.business_id
 
         response.should redirect_to(business_path)

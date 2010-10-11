@@ -26,9 +26,9 @@ group :test, :development do
   gem 'cucumber'
   gem 'spork'
   gem 'launchy'    # So you can do Then show me the page
-  gem 'rr'  
   gem 'factory_girl_rails'
   gem 'ZenTest'
+  gem 'rcov'
 end
 
 # Use unicorn as the web server

@@ -20,20 +20,6 @@ class UsersController < ApplicationController
   def destroy
   end
   
-  def show
-    @user = User.find_by_login(params[:login])
-    if @user
-      @user_status = @user.user_status    
-    else
-      flash[:notice] = "The user #{params[:login]}does not exist"
-      redirect_to profile_path(:login => current_user.login)
-    end
-  end
-  
-  def edit
-    @user = current_user
-  end
-  
   def update
     @user = current_user
     if @user.update_attributes(params[:user])

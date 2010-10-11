@@ -12,8 +12,8 @@ describe UsersController do
 
   it "should redirect after creation" do
     user = Factory(:user)
-    mock(User).new({}) {user}
-    mock(user).save {true}
+    User.should_receive(:new).and_return(user)
+    user.should_receive(:save).and_return(true)
     post :create, :user => {} 
     should set_the_flash
     response.should redirect_to(business_url)

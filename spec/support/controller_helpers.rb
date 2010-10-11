@@ -1,10 +1,9 @@
-module ControllerHelpers
   def current_user(stubs = {})
-    @current_user ||= mock_model(User, stubs)
+    @current_user ||= Factory(:user) 
   end
 
   def user_session(stubs = {}, user_stubs = {})
-    @current_user_session ||= mock_model(UserSession, {:user => current_user(user_stubs)}.merge(stubs))
+    @current_user_session ||= UserSession.create current_user
   end
 
   def login(session_stubs = {}, user_stubs = {})
@@ -12,6 +11,13 @@ module ControllerHelpers
   end
 
   def logout
-    @user_session = nil
+    @current_user_session = nil
   end
-end
+
+#  def self.login_user
+    #activate_authlogic
+    #@my_user = Factory(:user)
+    #UserSession.create(@my_user)
+    #controller.stub!(:current_user).and_return(@my_user)
+  #end # login_user
+ 

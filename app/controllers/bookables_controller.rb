@@ -1,14 +1,6 @@
 class BookablesController < ApplicationController
   before_filter :require_user
 
-  def index
-    @bookables = Bookable.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-    end
-  end
-
   def show
     @bookable = Bookable.find(params[:id])
 
