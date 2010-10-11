@@ -51,12 +51,12 @@ class BookablesController < ApplicationController
     end
   end
 
-  def destroy
-    @bookable = Bookable.find(params[:id])
-    @bookable.destroy
+  #def destroy
+    #@bookable = Bookable.find(params[:id])
+    #@bookable.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(bookables_url) }
-    end
-  end
+    #respond_to do |format|
+      #format.html { redirect_to(bookables_url) }
+    #end
+  #end
 end

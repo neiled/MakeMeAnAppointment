@@ -23,7 +23,7 @@ describe BookablesController do
       activate_authlogic
       login
       my_business = Factory(:business)
-      current_user.stub(:business).and_return (my_business)
+      current_user.stub(:business).and_return(my_business)
       my_bookable = Bookable.new
       proxy = mock('business association proxy', :build => my_bookable)
       my_business.should_receive(:bookables).and_return(proxy)
@@ -87,37 +87,48 @@ describe BookablesController do
 
   describe "PUT update" do
 
+    before(:each) do
+      activate_authlogic
+      login
+      @mock_bookable = Factory(:bookable)
+    end
+
     describe "with valid params" do
+
       it "updates the requested bookable" do
-        #Bookable.should_receive(:find).with("37") { mock_bookable }
-        #mock_bookable.should_receive(:update_attributes).with({'these' => 'params'})
-        #put :update, :id => "37", :bookable => {'these' => 'params'}
+        Bookable.should_receive(:find).with("37").and_return(@mock_bookable)
+        @mock_bookable.should_receive(:update_attributes).with({'these' => 'params'})
+        put :update, :id => "37", :bookable => {'these' => 'params'}
       end
 
       it "assigns the requested bookable as @bookable" do
-        #stub(Bookable).find { mock_bookable(:update_attributes => true) }
-        #put :update, :id => "1"
-        #assigns(:bookable).should be(mock_bookable)
+        @mock_bookable.should_receive(:update_attributes).and_return(true)
+        Bookable.stub(:find).and_return(@mock_bookable)
+        put :update, :id => "1"
+        assigns(:bookable).should be(@mock_bookable)
       end
 
-      it "redirects to the bookable" do
-        #stub(Bookable).find { mock_bookable(:update_attributes => true) }
-        #put :update, :id => "1"
-        #response.should redirect_to(bookable_url(mock_bookable))
+      it "redirects to the business" do
+        @mock_bookable.should_receive(:update_attributes).and_return(true)
+        Bookable.stub(:find).and_return(@mock_bookable)
+        put :update, :id => "1"
+        response.should redirect_to(business_path)
       end
     end
 
     describe "with invalid params" do
       it "assigns the bookable as @bookable" do
-        #stub(Bookable).find { mock_bookable(:update_attributes => false) }
-        #put :update, :id => "1"
-        #assigns(:bookable).should be(mock_bookable)
+        @mock_bookable.should_receive(:update_attributes).and_return(false)
+        Bookable.stub(:find).and_return(@mock_bookable)
+        put :update, :id => "1"
+        assigns(:bookable).should be(@mock_bookable)
       end
 
       it "re-renders the 'edit' template" do
-        #stub(Bookable).find { mock_bookable(:update_attributes => false) }
-        #put :update, :id => "1"
-        #response.should render_template("edit")
+        @mock_bookable.should_receive(:update_attributes).and_return(false)
+        Bookable.stub(:find).and_return(@mock_bookable)
+        put :update, :id => "1"
+        response.should render_template("edit")
       end
     end
 
