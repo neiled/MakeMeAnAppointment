@@ -2,19 +2,22 @@ require 'spec_helper'
 
 describe UserSessionsController do
   describe "POST create" do
-    it "redirects to the user's business" do
-      pending
-      activate_authlogic
-      #session = mock(UserSession)
-      #user = mock(User)
-      #business = mock(Business)
-      #UserSession.stub(:new).and_return(session)
-      #UserSession.stub(:user).and_return(user)
-      #User.stub(:business).and_return(business)
-      UserSession.mock(:save).and_return(true)
+    describe "with valid params" do
       
-      post :create
-      response.should redirect_to(:controller => "business", :action => "show")
+      it "redirects to the user's business" do
+        my_user = Factory(:user)
+        post :create, :user_session => {:email => my_user.email, :password => my_user.password}
+
+        response.should redirect_to(:controller => "businesses", :action => "show")
+      end
+    end
+
+    describe "with invalid params" do
+      it "renders the new action again" do
+        post :create, :user_session => {:email => "test@example.com", :password => "none"}
+        response.should render_template(:new)
+      end
+      
     end
   end
   describe "a POST to #destroy" do 

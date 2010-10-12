@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: git://github.com/rspec/rspec-mocks.git
-  revision: a6962353fd9ef35f33eb9d5ab427d628926d621e
+  revision: 4830d09ac955b15f0b6155c6b87a12912e94f60c
   specs:
     rspec-mocks (2.0.0)
       rspec-core (= 2.0.0)
@@ -21,7 +21,7 @@ GIT
 
 GIT
   remote: git://github.com/rspec/rspec-rails.git
-  revision: fdc4160b364d7c554ce11c48d62c4c4b49b155d6
+  revision: 953eefc7e2e67a8bd9fbed2a164b65dd84d70bf2
   specs:
     rspec-rails (2.0.0)
       rspec (= 2.0.0)
@@ -89,7 +89,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       selenium-webdriver (>= 0.0.3)
-    cells (3.4.1)
+    cells (3.4.2)
     childprocess (0.0.7)
       ffi (~> 0.6.3)
     configuration (1.1.0)
@@ -146,6 +146,7 @@ GEM
       activesupport (= 3.0.0)
       bundler (~> 1.0.0)
       railties (= 3.0.0)
+    rails3-generators (0.14.0)
     railties (3.0.0)
       actionpack (= 3.0.0)
       activesupport (= 3.0.0)
@@ -185,6 +186,7 @@ DEPENDENCIES
   haml
   launchy
   rails (= 3.0.0)
+  rails3-generators
   rcov
   rspec!
   rspec-core!

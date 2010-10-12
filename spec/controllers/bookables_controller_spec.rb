@@ -12,9 +12,12 @@ describe BookablesController do
 
   describe "GET show" do
     it "assigns the requested bookable as @bookable" do
-      #stub(Bookable).find("37") { mock_bookable }
-      #get :show, :id => "37"
-      #assigns(:bookable).should be(mock_bookable)
+      activate_authlogic
+      login
+      my_bookable = Factory(:bookable)
+      Bookable.should_receive(:find).with("37").and_return(my_bookable)
+      get :show, :id => "37"
+      assigns(:bookable).should be(my_bookable)
     end
   end
 
@@ -71,15 +74,21 @@ describe BookablesController do
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved bookable as @bookable" do
-        #stub(Bookable).new({'these' => 'params'}) { mock_bookable(:save => false) }
-        #post :create, :bookable => {'these' => 'params'}
-        #assigns(:bookable).should be(mock_bookable)
+        activate_authlogic
+        login
+        my_bookable = stub_model(Bookable)
+        my_bookable.should_receive(:save).and_return(false)
+        Bookable.should_receive(:new).and_return(my_bookable)
+        post :create, :bookable => {}
+        assigns(:bookable).should be(my_bookable)
       end
 
       it "re-renders the 'new' template" do
-        #stub(Bookable).new { mock_bookable(:save => false) }
-        #post :create, :bookable => {}
-        #response.should render_template("new")
+        activate_authlogic
+        login
+        Bookable.stub(:new).and_return(stub_model(Bookable, :save=>false))
+        post :create, :bookable => {}
+        response.should render_template("new")
       end
     end
 

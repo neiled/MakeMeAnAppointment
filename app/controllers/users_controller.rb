@@ -20,17 +20,5 @@ class UsersController < ApplicationController
   def destroy
   end
   
-  def update
-    @user = current_user
-    if @user.update_attributes(params[:user])
-      flash[:notice] = "Details Updated"
-      redirect_to(profile_path(current_user.login))
-    else
-      render :action => "edit"
-    end    
-    
-  end
-  
- 
 end
 

@@ -29,6 +29,7 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'ZenTest'
   gem 'rcov'
+  gem 'rails3-generators'
 end
 
 # Use unicorn as the web server
