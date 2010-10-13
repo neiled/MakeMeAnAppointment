@@ -36,8 +36,8 @@ GIT
       rspec-mocks (= 2.0.0)
 
 GIT
-  remote: http://github.com/binarylogic/authlogic.git
-  revision: 66ed79515919fe13016911b10ebe734cf8718dc7
+  remote: http://github.com/bdrister/authlogic.git
+  revision: 0a58cd2e113df18814cefbfc47b485eb5a503c58
   specs:
     authlogic (2.1.6)
       activesupport
@@ -146,6 +146,7 @@ GEM
       activesupport (= 3.0.0)
       bundler (~> 1.0.0)
       railties (= 3.0.0)
+    rails-geocoder (0.9.4)
     rails3-generators (0.14.0)
     railties (3.0.0)
       actionpack (= 3.0.0)
@@ -186,6 +187,7 @@ DEPENDENCIES
   haml
   launchy
   rails (= 3.0.0)
+  rails-geocoder
   rails3-generators
   rcov
   rspec!

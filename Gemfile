@@ -8,9 +8,11 @@ gem 'rails', '3.0.0'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'haml'
 gem 'formtastic'
-gem 'authlogic', :git => "http://github.com/binarylogic/authlogic.git"
+#gem 'authlogic', :git => "http://github.com/binarylogic/authlogic.git"
+gem 'authlogic', :git => "http://github.com/bdrister/authlogic.git"
 gem 'flutie', :git => "http://github.com/thoughtbot/flutie.git"
 gem 'cells'
+gem "rails-geocoder", :require => "geocoder"
 
 group :test, :development do
   #gem "rspec-rails", ">= 2.0.0.beta.22"

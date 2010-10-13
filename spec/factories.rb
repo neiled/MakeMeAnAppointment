@@ -1,5 +1,6 @@
 Factory.define :business do |b|
   b.name "Acme Corp"
+  b.address "Buckingham Palace, London"
 end
 
 Factory.define :user do |f|

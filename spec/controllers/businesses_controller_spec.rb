@@ -49,7 +49,7 @@ describe BusinessesController do
       it "redirects to the business" do
         current_user.business.should_receive(:update_attributes).and_return(true)
         put :update
-        response.should redirect_to(business_url)
+        response.should redirect_to(edit_business_url)
       end
     end
 

@@ -44,3 +44,23 @@ MVF
     Receive an email confirmation
     Be able to cancel via email conf.
  
+Other features
+  Capcha for customer appointments (optional)
+
+
+ Site Map
+ Landing
+  Sign in
+    Homepage (with todays calendar)
+      Sign out
+      Edit Businesses
+        Edit Bookable
+        Add a bookable
+        Add Appointment type
+        Edit Appointment type
+        Edit Business Calendar
+        [Delete Appointment type]
+        [Delete a bookable]
+      View all appointments
+      View bookable (shows calendar for that bookable)
+

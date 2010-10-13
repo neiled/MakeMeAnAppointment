@@ -14,3 +14,16 @@
 #bookable_table {
   overflow: auto;
   width: 100%; }
+
+#business_details {
+  overflow: auto; }
+
+#details_form {
+  float: left;
+  width: 400px; }
+
+#business_address {
+  width: 300px; }
+
+#business_map {
+  float: left; }

@@ -11,4 +11,12 @@ Feature: Manage business settings
     And I press "Update"
     Then I should be on the edit business page
     And my business should be called "Edited Name"
+
+  Scenario: Edit the address of the business
+    Given I am logged in
+    And I am on the edit business page
+    When I fill in "Address" with "buckingham palace, london"
+    And I press "Update"
+    Then I should be on the edit business page
+    And my business should have an address of "buckingham palace, london"
   

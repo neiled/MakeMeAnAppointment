@@ -1,5 +1,9 @@
 require 'spec_helper'
 
 describe Business do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "Geocoding" do
+    it "after validation it should return the correct latitude and longitude" do
+       pending
+    end
+  end
 end

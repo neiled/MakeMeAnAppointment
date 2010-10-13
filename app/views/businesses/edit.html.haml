@@ -1,3 +1,22 @@
-=semantic_form_for @business, :url => business_url do |f|
-  = f.inputs :name
-  = f.buttons
+= content_for :javascript do
+  %script{:src => "http://maps.google.com/maps/api/js?sensor=false"}
+  %script{:src => "/javascripts/google_map.js"}
+  %script
+    $(document).ready(function()
+    {
+    initialize(#{@business.latitude}, #{@business.longitude});
+    })
+
+
+#business_details
+  #details_form
+    =semantic_form_for @business, :url => business_url do |f|
+      = f.inputs do 
+        = f.input :name
+        = f.input :address
+        = f.input :website
+      = f.buttons
+  #business_map
+    - unless @business.address.nil?
+      #google_map
+      = link_to "See this on google maps", "http://maps.google.com/?q=#{@business.latitude},#{@business.longitude}+(#{@business.name})"

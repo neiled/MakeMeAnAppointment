@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101007145228) do
+ActiveRecord::Schema.define(:version => 20101013133021) do
 
   create_table "bookables", :force => true do |t|
     t.string   "name"
@@ -24,6 +24,12 @@ ActiveRecord::Schema.define(:version => 20101007145228) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "website"
+    t.text     "address"
+    t.string   "phone_main"
+    t.string   "phone_other"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "users", :force => true do |t|
