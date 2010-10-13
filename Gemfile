@@ -11,7 +11,7 @@ gem 'formtastic'
 #gem 'authlogic', :git => "http://github.com/binarylogic/authlogic.git"
 gem 'authlogic', :git => "http://github.com/bdrister/authlogic.git"
 gem 'flutie', :git => "http://github.com/thoughtbot/flutie.git"
-gem 'cells'
+gem 'cells', :git => "http://github.com/apotonick/cells.git"
 gem "rails-geocoder", :require => "geocoder"
 
 group :test, :development do

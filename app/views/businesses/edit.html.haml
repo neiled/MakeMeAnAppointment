@@ -17,6 +17,4 @@
         = f.input :website
       = f.buttons
   #business_map
-    - unless @business.address.nil?
-      #google_map
-      = link_to "See this on google maps", "http://maps.google.com/?q=#{@business.latitude},#{@business.longitude}+(#{@business.name})"
+    = render_cell :plastic_mapper, :show, :business => @business

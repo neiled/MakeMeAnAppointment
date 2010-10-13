@@ -36,6 +36,12 @@ GIT
       rspec-mocks (= 2.0.0)
 
 GIT
+  remote: http://github.com/apotonick/cells.git
+  revision: 5255feba634dab70e431cac3568bb52377a39061
+  specs:
+    cells (3.4.2)
+
+GIT
   remote: http://github.com/bdrister/authlogic.git
   revision: 0a58cd2e113df18814cefbfc47b485eb5a503c58
   specs:
@@ -89,7 +95,6 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       selenium-webdriver (>= 0.0.3)
-    cells (3.4.2)
     childprocess (0.0.7)
       ffi (~> 0.6.3)
     configuration (1.1.0)
@@ -177,7 +182,7 @@ DEPENDENCIES
   ZenTest
   authlogic!
   capybara
-  cells
+  cells!
   cucumber
   cucumber-rails
   database_cleaner
