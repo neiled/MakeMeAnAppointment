@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/rspec/rspec-core.git
-  revision: 10d9377e0795e81790a8dcbc5d44a0dc5be546e6
+  revision: 4ce4e5febba6f52ff4436a4e6409113822617369
   specs:
     rspec-core (2.0.0)
 
@@ -21,14 +21,14 @@ GIT
 
 GIT
   remote: git://github.com/rspec/rspec-rails.git
-  revision: 953eefc7e2e67a8bd9fbed2a164b65dd84d70bf2
+  revision: 1b82c1f9af0465ccf039546733a25b09c7563d99
   specs:
     rspec-rails (2.0.0)
       rspec (= 2.0.0)
 
 GIT
   remote: git://github.com/rspec/rspec.git
-  revision: 18b895444cd9d30b8b8b8c8a6aee24452e5b73fc
+  revision: 4dbf5ae412430b4ecb5c35c0a08ee204aba43717
   specs:
     rspec (2.0.0)
       rspec-core (= 2.0.0)
@@ -37,7 +37,7 @@ GIT
 
 GIT
   remote: http://github.com/apotonick/cells.git
-  revision: 5255feba634dab70e431cac3568bb52377a39061
+  revision: b8f36cec9110caf6ae926be8490a0ad177e92e25
   specs:
     cells (3.4.2)
 
@@ -151,7 +151,7 @@ GEM
       activesupport (= 3.0.0)
       bundler (~> 1.0.0)
       railties (= 3.0.0)
-    rails-geocoder (0.9.4)
+    rails-geocoder (0.9.5)
     rails3-generators (0.14.0)
     railties (3.0.0)
       actionpack (= 3.0.0)

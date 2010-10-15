@@ -2,10 +2,6 @@
   =stylesheet_link_tag "business.css"
 %h1= @business.name
 
-%h2
-  Current Bookables
-#bookable_table
-  =render @business.bookables
-
+=render_cell :plastic_calendar, :display
 
 = link_to "Add something that can be booked", new_business_bookable_path

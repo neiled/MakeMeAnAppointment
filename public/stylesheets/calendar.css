@@ -1,0 +1,8 @@
+#calendar {
+  width: 75%; }
+
+.unavailable {
+  background-color: #6464c8; }
+
+th {
+  text-align: center; }
