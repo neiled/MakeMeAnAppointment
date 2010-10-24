@@ -16,3 +16,11 @@ Factory.define(:bookable) do |b|
   b.description "This bookable thing is bookable"
   b.business {|b| b.association(:business)}
 end
+
+Factory.define(:appointment_type) do |a|
+  a.name "Cut and Colour"
+  a.description "Go from brunette to blonde"
+  a.business {|b| b.association(:business)}
+  a.price 20
+  a.duration 30
+end

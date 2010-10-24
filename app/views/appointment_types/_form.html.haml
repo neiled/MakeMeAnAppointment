@@ -1,0 +1,10 @@
+= semantic_form_for [:business, @appointment_type] do |f|
+  = f.semantic_errors :state
+  = f.inputs do
+    = f.input :name
+    = f.input :description
+    = f.input :price
+    = f.input :duration
+    = f.input :business_id, :as => :hidden
+  = f.buttons
+

@@ -10,7 +10,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101013133021) do
+ActiveRecord::Schema.define(:version => 20101024180007) do
+
+  create_table "appointment_types", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.decimal  "price",       :precision => 19, :scale => 4
+    t.integer  "duration"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "business_id"
+  end
 
   create_table "bookables", :force => true do |t|
     t.string   "name"

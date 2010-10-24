@@ -1,5 +1,6 @@
 class Business < ActiveRecord::Base
   has_many :bookables
+  has_many :appointment_types
   geocoded_by :location
   after_validation :fetch_coordinates
 

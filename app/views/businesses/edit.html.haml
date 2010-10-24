@@ -22,4 +22,10 @@
   %ul
   - @business.bookables.each do |b|
     %li= link_to b.name, edit_business_bookable_path(b)
-= link_to "Add something that can be booked", new_business_bookable_path
+  = link_to "Add something that can be booked", new_business_bookable_path
+
+#appointment_types
+  %ul
+  - @business.appointment_types.each do |b|
+    %li= link_to b.name, edit_business_appointment_type_path(b)
+  = link_to "Add a new appointment type", new_business_appointment_type_path
