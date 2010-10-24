@@ -14,10 +14,10 @@ describe BookablesController do
     it "assigns the requested bookable as @bookable" do
       activate_authlogic
       login
-      my_bookable = Factory(:bookable)
-      Bookable.should_receive(:find).with("37").and_return(my_bookable)
+      @mock_bookable = Factory(:bookable, :business => current_user.business)
+      current_user.business.bookables.should_receive(:find).with("37") {@mock_bookable}
       get :show, :id => "37"
-      assigns(:bookable).should be(my_bookable)
+      assigns(:bookable).should be(@mock_bookable)
     end
   end
 
@@ -40,8 +40,8 @@ describe BookablesController do
     it "assigns the requested bookable as @bookable" do
       activate_authlogic
       login
-      my_mock = Factory(:bookable)
-      Bookable.stub(:find).with("37").and_return(my_mock)
+      my_mock = Factory(:bookable, :business => current_user.business)
+      current_user.business.bookables.should_receive(:find).with("37") {my_mock}
       get :edit, :id => "37"
       assigns(:bookable).should be(my_mock)
     end
@@ -68,7 +68,7 @@ describe BookablesController do
         Bookable.stub(:new).with({}).and_return(my_mock)
         post :create, :bookable => {}, :business_id => my_mock.business_id
 
-        response.should redirect_to(business_path)
+        response.should redirect_to(edit_business_path)
       end
     end
 
@@ -99,13 +99,13 @@ describe BookablesController do
     before(:each) do
       activate_authlogic
       login
-      @mock_bookable = Factory(:bookable)
+      @mock_bookable = Factory(:bookable, :business => current_user.business)
     end
 
     describe "with valid params" do
 
       it "updates the requested bookable" do
-        Bookable.should_receive(:find).with("37").and_return(@mock_bookable)
+        current_user.business.bookables.should_receive(:find).with("37") {@mock_bookable}
         @mock_bookable.should_receive(:update_attributes).with({'these' => 'params'})
         put :update, :id => "37", :bookable => {'these' => 'params'}
       end
@@ -113,15 +113,17 @@ describe BookablesController do
       it "assigns the requested bookable as @bookable" do
         @mock_bookable.should_receive(:update_attributes).and_return(true)
         Bookable.stub(:find).and_return(@mock_bookable)
-        put :update, :id => "1"
+        current_user.business.bookables.should_receive(:find).with("37") {@mock_bookable}
+        put :update, :id => "37"
         assigns(:bookable).should be(@mock_bookable)
       end
 
       it "redirects to the business" do
         @mock_bookable.should_receive(:update_attributes).and_return(true)
         Bookable.stub(:find).and_return(@mock_bookable)
-        put :update, :id => "1"
-        response.should redirect_to(business_path)
+        current_user.business.bookables.should_receive(:find).with("37") {@mock_bookable}
+        put :update, :id => "37"
+        response.should redirect_to(edit_business_path)
       end
     end
 
@@ -129,14 +131,15 @@ describe BookablesController do
       it "assigns the bookable as @bookable" do
         @mock_bookable.should_receive(:update_attributes).and_return(false)
         Bookable.stub(:find).and_return(@mock_bookable)
-        put :update, :id => "1"
+        current_user.business.bookables.should_receive(:find).with("37") {@mock_bookable}
+        put :update, :id => "37"
         assigns(:bookable).should be(@mock_bookable)
       end
 
       it "re-renders the 'edit' template" do
         @mock_bookable.should_receive(:update_attributes).and_return(false)
-        Bookable.stub(:find).and_return(@mock_bookable)
-        put :update, :id => "1"
+        current_user.business.bookables.should_receive(:find).with("37") {@mock_bookable}
+        put :update, :id => "37"
         response.should render_template("edit")
       end
     end
@@ -144,16 +147,23 @@ describe BookablesController do
   end
 
   describe "DELETE destroy" do
+
+     before(:each) do
+      activate_authlogic
+      login
+      @mock_bookable = Factory(:bookable, :business => current_user.business)
+    end
+
     it "destroys the requested bookable" do
-      #Bookable.should_receive(:find).with("37") { mock_bookable }
-      #mock_bookable.should_receive(:destroy)
-      #delete :destroy, :id => "37"
+      current_user.business.bookables.should_receive(:find).with("37") {@mock_bookable}
+      @mock_bookable.should_receive(:destroy)
+      delete :destroy, :id => "37"
     end
 
     it "redirects to the bookables list" do
-      #stub(Bookable).find { mock_bookable }
-      #delete :destroy, :id => "1"
-      #response.should redirect_to(bookables_url)
+      current_user.business.bookables.should_receive(:find).with("37") {@mock_bookable}
+      delete :destroy, :id => "37"
+      response.should redirect_to(edit_business_url)
     end
   end
 

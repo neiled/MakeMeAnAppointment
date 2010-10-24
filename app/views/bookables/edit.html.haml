@@ -1,0 +1,6 @@
+%h1 Editing bookable
+
+= render 'form'
+
+= button_to 'Delete', business_bookable_path(@bookable), :method => "delete"  
+= link_to 'Back', @business 

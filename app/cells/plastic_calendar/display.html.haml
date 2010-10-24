@@ -4,52 +4,10 @@
   %table
     %tr
       %th Time
-      %th Bob
-      %th Sally
-      %th Jane
-    %tr
-      %td 9:00
-      %td{:rowspan => 5, :class => "unavailable"}
-      %td
-      %td
-    %tr
-      %td 10:00
-      %td
-      %td
-    %tr
-      %td 11:00
-      %td
-      %td
-    %tr
-      %td 12:00
-      %td
-      %td
-    %tr
-      %td 13:00
-      %td
-      %td
-    %tr
-      %td 14:00
-      %td
-      %td
-      %td
-    %tr
-      %td 15:00
-      %td
-      %td
-      %td
-    %tr
-      %td 16:00
-      %td
-      %td
-      %td
-    %tr
-      %td 17:00
-      %td
-      %td
-      %td
-    %tr
-      %td 18:00
-      %td
-      %td
-      %td
+      - @bookables.each do  |b|
+        %th= b.name
+    - (9...20).each do |time|
+      %tr
+        %td= format("%d:00", time)
+        - @bookables.each do  |b|
+          %td= b.name

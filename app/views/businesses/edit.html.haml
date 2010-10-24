@@ -18,3 +18,8 @@
       = f.buttons
   #business_map
     = render_cell :plastic_mapper, :show, :business => @business
+#bookables
+  %ul
+  - @business.bookables.each do |b|
+    %li= link_to b.name, edit_business_bookable_path(b)
+= link_to "Add something that can be booked", new_business_bookable_path

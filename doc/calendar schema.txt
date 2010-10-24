@@ -1,0 +1,23 @@
+Calendar
+  HolidayDates
+  WorkDays
+
+WorkDay
+  Day [Mon,Tues,Wed...]
+  StartTime
+  EndTime
+  NonWorkingDay [bool]
+
+Appointment
+  Date
+  StartTime
+  EndTime
+  AppointmentTypeID
+  CustomerID
+  BookableID
+
+Customer
+  Name
+  Email
+  Phone
+

@@ -2,7 +2,7 @@ class BookablesController < ApplicationController
   before_filter :require_user
 
   def show
-    @bookable = Bookable.find(params[:id])
+    @bookable = current_user.business.bookables.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -19,7 +19,7 @@ class BookablesController < ApplicationController
   end
 
   def edit
-    @bookable = Bookable.find(params[:id])
+    @bookable = current_user.business.bookables.find(params[:id])
   end
 
   def create
@@ -29,7 +29,7 @@ class BookablesController < ApplicationController
     respond_to do |format|
       if @bookable.save
         format.html {
-          redirect_to(business_path, :notice => 'Bookable was successfully created.') 
+          redirect_to(edit_business_path, :notice => 'Bookable was successfully created.') 
         }
       else
         format.html { render :action => "new" }
@@ -38,12 +38,12 @@ class BookablesController < ApplicationController
   end
 
   def update
-    @bookable = Bookable.find(params[:id])
+    @bookable = current_user.business.bookables.find(params[:id])
 
     respond_to do |format|
       if @bookable.update_attributes(params[:bookable])
         format.html {
-          redirect_to(business_path, :notice => 'Bookable was successfully updated.') 
+          redirect_to(edit_business_path, :notice => 'Bookable was successfully updated.') 
         }
       else
         format.html { render :action => "edit" }
@@ -51,12 +51,12 @@ class BookablesController < ApplicationController
     end
   end
 
-  #def destroy
-    #@bookable = Bookable.find(params[:id])
-    #@bookable.destroy
+  def destroy
+    @bookable = current_user.business.bookables.find(params[:id])
+    @bookable.destroy
 
-    #respond_to do |format|
-      #format.html { redirect_to(bookables_url) }
-    #end
-  #end
+    respond_to do |format|
+      format.html { redirect_to(edit_business_url) }
+    end
+  end
 end
