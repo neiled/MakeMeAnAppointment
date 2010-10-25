@@ -1,16 +1,8 @@
 require 'spec_helper'
 
 describe BookablesController do
-  
-  describe "GET index" do
-    it "assigns all bookables as @bookables" do
-      #stub(Bookable).all { [mock_bookable] }
-      #get :index
-      #assigns(:bookables).should eq([mock_bookable])
-    end
-  end
 
-  describe "GET show" do
+   describe "GET show" do
     it "assigns the requested bookable as @bookable" do
       activate_authlogic
       login
@@ -86,7 +78,9 @@ describe BookablesController do
       it "re-renders the 'new' template" do
         activate_authlogic
         login
-        Bookable.stub(:new).and_return(stub_model(Bookable, :save=>false))
+        my_bookable = stub_model(Bookable)
+        my_bookable.should_receive(:save).and_return(false)
+        Bookable.should_receive(:new).and_return(my_bookable)
         post :create, :bookable => {}
         response.should render_template("new")
       end

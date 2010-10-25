@@ -1,0 +1,7 @@
+%h1 Editing appointment type
+
+= render 'form'
+
+= button_to 'Delete', business_appointment_type_path(@appointment_type), :method => "delete"  
+= link_to 'Back', @appointment_type.business 
+

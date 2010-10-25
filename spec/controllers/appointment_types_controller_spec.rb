@@ -33,5 +33,34 @@ describe AppointmentTypesController do
       
     end
   end
+  
+  describe "GET edit" do
+    it "should assign the selected appointment type" do
+      my_mock = Factory(:appointment_type, :business => current_user.business)
+      current_user.business.appointment_types.should_receive(:find).with("37") {my_mock}
+      get :edit, :id => "37"
+      assigns(:appointment_type).should be(my_mock)
+    end
+  end
+
+  describe "PUT update" do
+    describe "with valid params" do
+      before(:each) do
+        @appointment_type = Factory(:appointment_type, :business_id => current_user.business.id)
+      end
+      it "should update the appointment type" do
+        current_user.business.appointment_types.should_receive(:find).with("37") {@appointment_type}
+        @appointment_type.should_receive(:update_attributes).with({'these' => 'params'})
+        put :update, :id => "37", :appointment_type => {'these' => 'params'}
+      end
+
+      it "should redirect back to the business" do
+        @appointment_type.should_receive(:update_attributes).and_return(true)
+        current_user.business.appointment_types.should_receive(:find).with("37") {@appointment_type}
+        put :update, :id => "37"
+        response.should redirect_to(edit_business_path)
+      end
+    end
+  end
 
 end
