@@ -9,7 +9,8 @@ class AppointmentTypesController < ApplicationController
   def create
     @appointment_type = AppointmentType.new(params[:appointment_type])
     if @appointment_type.save
-      redirect_to(edit_business_path, :notice => 'Appointment type was successfully created.') 
+      redirect_to(edit_business_path, \
+                  :notice => 'Appointment type was successfully created.') 
     else
       render :action => :new
     end
@@ -27,5 +28,12 @@ class AppointmentTypesController < ApplicationController
       render :action => :edit
     end
   end # update
+
+  def destroy
+    @appointment_type = current_user.business.appointment_types.find(params[:id])
+    @appointment_type.destroy
+    redirect_to edit_business_path
+  end # destroy
+  
   
 end

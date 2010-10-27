@@ -44,23 +44,60 @@ describe AppointmentTypesController do
   end
 
   describe "PUT update" do
+    before(:each) do
+      @appointment_type = Factory(:appointment_type, \
+                                  :business_id => current_user.business.id)
+      current_user.business.appointment_types.\
+        should_receive(:find).with("37") {@appointment_type}
+    end
+
     describe "with valid params" do
-      before(:each) do
-        @appointment_type = Factory(:appointment_type, :business_id => current_user.business.id)
-      end
       it "should update the appointment type" do
-        current_user.business.appointment_types.should_receive(:find).with("37") {@appointment_type}
-        @appointment_type.should_receive(:update_attributes).with({'these' => 'params'})
+        @appointment_type.should_receive(:update_attributes).\
+          with({'these' => 'params'})
+
         put :update, :id => "37", :appointment_type => {'these' => 'params'}
       end
 
       it "should redirect back to the business" do
         @appointment_type.should_receive(:update_attributes).and_return(true)
-        current_user.business.appointment_types.should_receive(:find).with("37") {@appointment_type}
+
         put :update, :id => "37"
         response.should redirect_to(edit_business_path)
       end
     end
+
+    describe "with invalid params" do
+      it "should assign appointment type" do
+        @appointment_type.should_receive(:update_attributes).and_return(false)
+        put :update, :id => "37"
+
+        assigns(:appointment_type).should be(@appointment_type)
+      end  
+
+      it "should rerender the new action" do
+        @appointment_type.should_receive(:update_attributes).and_return(false)
+        put :update, :id => "37"
+
+        response.should render_template(:edit) 
+      end
+    end
+  end
+
+  describe "DELETE destroy" do
+
+     before(:each) do
+      @appointment_type = Factory(:appointment_type, \
+                                  :business_id => current_user.business.id)
+    end
+
+    it "deletes the requested appointment type" do
+      current_user.business.appointment_types.\
+        should_receive(:find).with("37") {@appointment_type}
+      @appointment_type.should_receive(:destroy)
+      delete :destroy, :id => "37"
+    end
+    
   end
 
 end

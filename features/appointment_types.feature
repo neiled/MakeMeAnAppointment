@@ -33,4 +33,14 @@ Feature: Managing Appointment Types
     And I fill in "Name" with "Shaved head"
     And I press "Update"
     Then I should be on the edit business page
-    And I should see "Saved head"
+    And I should see "Shaved head"
+
+  Scenario: Deleting an appointment type
+    Given I am logged in
+    And I have an appointment type called "Cut and Colour"
+    And I am on the edit business page
+    When I follow "Cut and Colour"
+    And I press "Delete"
+    Then I should be on the edit business page
+    And there should be 0 appointment types
+    And I should not see "Cut and Colour"
