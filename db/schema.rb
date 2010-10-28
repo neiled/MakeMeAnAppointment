@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101024180007) do
+ActiveRecord::Schema.define(:version => 20101028185636) do
 
   create_table "appointment_types", :force => true do |t|
     t.string   "name"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20101024180007) do
     t.integer  "business_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "calendar_id"
   end
 
   create_table "businesses", :force => true do |t|
@@ -40,6 +41,19 @@ ActiveRecord::Schema.define(:version => 20101024180007) do
     t.string   "phone_other"
     t.float    "latitude"
     t.float    "longitude"
+    t.integer  "calendar_id"
+  end
+
+  create_table "calendars", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "holiday_dates", :force => true do |t|
+    t.integer  "calendar_id"
+    t.date     "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
@@ -59,6 +73,15 @@ ActiveRecord::Schema.define(:version => 20101024180007) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "business_id"
+  end
+
+  create_table "work_days", :force => true do |t|
+    t.integer  "calendar_id"
+    t.integer  "day"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

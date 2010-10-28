@@ -75,7 +75,7 @@ describe AppointmentTypesController do
         assigns(:appointment_type).should be(@appointment_type)
       end  
 
-      it "should rerender the new action" do
+      it "should rerender the edit action" do
         @appointment_type.should_receive(:update_attributes).and_return(false)
         put :update, :id => "37"
 

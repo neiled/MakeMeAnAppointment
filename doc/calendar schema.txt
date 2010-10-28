@@ -1,12 +1,16 @@
 Calendar
-  HolidayDates
-  WorkDays
+  HolidayDates:HolidayDate
+  WorkDays:WorkDay
 
 WorkDay
-  Day [Mon,Tues,Wed...]
-  StartTime
-  EndTime
-  NonWorkingDay [bool]
+  Calendar_id:integer
+  Day_id [Mon,Tues,Wed...]
+  StartTime:time
+  EndTime:time
+
+HolidayDate
+  Calendar_id:integer
+  Date:Date
 
 Appointment
   Date
@@ -20,4 +24,38 @@ Customer
   Name
   Email
   Phone
+
+Every business has a calendar
+Every bookable has a calendar
+
+Every calendar has a list of non working dates (holidays etc)
+Every calendar has a collection of WorkingDays [Mon-Sun]
+
+Each WorkingDay has:
+  Start Time
+  End time
+  Day Identifier (Mon-Sun)
+
+The business calendar and bookable calendar work to determine what days a bookable
+works.
+
+For non working dates, the business is the basis and then the bookable can add to
+the list of dates. For example if the business is closed over xmas than that will
+affect all bookables. However a bookables holiday will only affect that bookable.
+
+For what times worked during the week the days worked and the start time and end
+time are defaulted to the business calendar. However, if a bookable doesn't have an
+entry for a paricular day then they are not available for appointments for that day.
+For example, ususally the business is open Mon-Fri so there are entries for Mon-Fri
+in the business calendar, however one worker doesn't work wednesdays so they don't
+have an entry for the wednesday.
+If a bookable has a null start time or end time that means it defaults to the
+businesses start time or end time.
+If the bookable has breaks when they are unavailable during a day, then this would
+be recorded as a workday entry where the start time would be the start of the period
+before the break and the end time would be the time the break starts. They would
+then have a second workday entry for the same day with a different start and end
+time, starting when the break ends and ending when the end of the day finishes or
+when the second break starts.
+
 
