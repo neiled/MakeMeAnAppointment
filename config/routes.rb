@@ -8,6 +8,7 @@ Mmaa::Application.routes.draw do
   resource :business do
     resources :bookables
     resources :appointment_types
+    resource :calendar
   end
   resources :user_sessions
   #match 'signin' => 'user_sessions#new', :as => :signin
