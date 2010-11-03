@@ -8,5 +8,10 @@ class Business < ActiveRecord::Base
   def location
     address.gsub(/[\n]/, ',').gsub(/\s+/," ") unless address.nil?
   end # lo
+
+  def after_create
+    self.calendar = Calendar.create
+  end # after_create
+  
   
 end

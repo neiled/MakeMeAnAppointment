@@ -24,3 +24,14 @@ Factory.define(:appointment_type) do |a|
   a.price 20
   a.duration 30
 end
+
+Factory.define(:calendar) do |c|
+
+end
+
+Factory.define(:holiday_date) do |d|
+  d.calendar { |d| d.association(:calendar)}
+  d.date nil
+  d.start_time nil
+  d.end_time nil
+end

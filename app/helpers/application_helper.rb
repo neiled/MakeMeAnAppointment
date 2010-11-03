@@ -8,7 +8,7 @@ module ApplicationHelper
      COMMON_YEAR_DAYS_IN_MONTH[month]
   end
 
-  def calendar_row(m, current_year)
+  def calendar_row(m, current_year, calendar)
     start_date = Time.utc(current_year, m, 1)
     output = "<td>" + start_date.strftime("%b") + "</td>"
     current_month = start_date.month
@@ -21,8 +21,8 @@ module ApplicationHelper
      if current_time.month == current_month
        dim = days_in_month(current_time.month, current_time.year)
        if d <= dim
-        output += "<td>"
-        output += current_time.day.to_s
+        output += "<td class=\"" + get_calendar_cell_class(current_time, calendar) + "\">"
+        output += link_to current_time.day.to_s, "add_holiday"
         output += "</td>"
        end
      end
@@ -30,6 +30,16 @@ module ApplicationHelper
 
     output
   end # calendar_row
+
+  def get_calendar_cell_class(current_time, calendar)
+    if calendar.has_a_holiday_on(current_time)
+      "holiday"
+    else
+      "no_holiday"
+    end
+
+  end # get_calendar_cell_class(current_time, calendar)
+  
   
 
 end

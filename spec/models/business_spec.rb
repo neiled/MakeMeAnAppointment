@@ -1,9 +1,8 @@
 require 'spec_helper'
 
 describe Business do
-  describe "Geocoding" do
-    it "after validation it should return the correct latitude and longitude" do
-       pending
-    end
+  it "should create a calendar" do
+    b = Factory(:business)
+    assert b.calendar.nil? == false
   end
 end
