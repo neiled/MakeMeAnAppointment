@@ -7,9 +7,13 @@
 th {
   text-align: center; }
 
-#holiday_calendar th, #holiday_calendar td {
-  margin: 0;
-  padding: 0.3em;
-  text-align: center; }
-#holiday_calendar .holiday {
-  background-color: #6464c8; }
+#holiday_calendar {
+  font-size: 0.85em; }
+  #holiday_calendar tr.alternate {
+    background-color: #c8c8c8; }
+  #holiday_calendar th, #holiday_calendar td {
+    margin: 0;
+    padding: 0.275em;
+    text-align: center; }
+  #holiday_calendar .holiday {
+    background-color: #6464c8; }

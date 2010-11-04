@@ -4,12 +4,13 @@ class Business < ActiveRecord::Base
   belongs_to :calendar
   geocoded_by :location
   after_validation :fetch_coordinates
+  after_create :create_calendar
 
   def location
     address.gsub(/[\n]/, ',').gsub(/\s+/," ") unless address.nil?
   end # lo
 
-  def after_create
+  def create_calendar
     self.calendar = Calendar.create
   end # after_create
   

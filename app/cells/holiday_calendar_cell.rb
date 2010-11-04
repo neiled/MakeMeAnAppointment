@@ -6,7 +6,7 @@ class HolidayCalendarCell < Cell::Rails
 
   def display
     current_user = @opts[:current_user]
-    @business_calendar = current_user.business.calendar
+    @business_calendar = Calendar.includes(:holiday_dates).find(current_user.business.calendar.id)
     @total = @opts[:total]
     @current_year = @opts[:current_year]
     render

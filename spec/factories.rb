@@ -32,6 +32,7 @@ end
 Factory.define(:holiday_date) do |d|
   d.calendar { |d| d.association(:calendar)}
   d.date nil
+  d.end_date {|u| u.end_date}
   d.start_time nil
-  d.end_time nil
+  d.end_time {|u| u.start_time}
 end
