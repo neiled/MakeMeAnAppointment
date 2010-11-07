@@ -4,7 +4,7 @@ class Calendar < ActiveRecord::Base
 
   def self.has_a_holiday_on(date, holiday_dates)
     holiday_dates.each do |d|
-      if d.date <= date and d.end_date >= date
+      if d.date <= date and d.end_date >= date and not d.destroyed?
         return true
       end
     end

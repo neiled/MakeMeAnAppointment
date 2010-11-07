@@ -22,15 +22,13 @@ module ApplicationHelper
 
     dim = days_in_month(start_date.month, start_date.year)
     (1..dim).each do |d|
-     current_time = Date.new(current_year, m, d)
-     if current_time.month == current_month
-       if d <= dim
+      current_time = Date.new(current_year, m, d)
+      if current_time.month == current_month
         output += "<td class=\"" + get_calendar_cell_class(current_time, calendar) + "\">"
-        output += link_to current_time.day.to_s, "add_holiday"
+        output += link_to current_time.day.to_s, toggle_holiday_path(:date => current_time, :calendar_id => calendar.id), :method=> :post,  :class => "add_holiday"
         output += "</td>"
         total -= 1
-       end
-     end
+      end
     end
 
     #print out the rest of the row

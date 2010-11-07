@@ -1,3 +1,6 @@
+= content_for :javascript do
+  %script{:src => "/javascripts/holiday_calendar.js"}
+   
 %h1 Your Calendar
 
-= render_cell :holiday_calendar, :display, :current_user => @current_user, :total => 37, :current_year => 2010
+= render_cell :holiday_calendar, :display, :current_user => @current_user, :total => 37, :current_year => Time.now.year
